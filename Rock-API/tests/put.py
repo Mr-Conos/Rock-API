@@ -2,6 +2,6 @@ import requests
 
 
 # Base Ip
-BASE = "http://127.0.0.1:5000/"           
-response = requests.put(BASE + "rock/" + "fuck", {"name": "fuck","desc":"we rock", "image": "none","rating": 1})
+BASE = "https://mrconos.pythonanywhere.com/"           
+response = requests.put(BASE + "rock/" + "rock", {"name": "rock","desc":"Welcome to rock API where you can find rocks and rate them. This isn't what you think lol.", "image": "none","rating": 5})
 print(response.json())

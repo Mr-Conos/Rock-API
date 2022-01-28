@@ -1,7 +1,6 @@
 from flask import Flask, request
 from flask_restful import Api, Resource, reqparse, abort, fields, marshal_with
 from flask_sqlalchemy import SQLAlchemy
-import uuid
 import random
 
 app = Flask(__name__)
@@ -63,13 +62,6 @@ class Rockss(Resource):
 
 	@marshal_with(resource_fields)
 	def put(self, name):
-		with open('Rock-API/api/nsfw.txt') as file:
-			contents = file.read()
-			if name in contents:
-				abort(409, message="This contains NSFW words. Please try again.")
-			else:
-
-				pass
 		id = generate_id()
 		args = rock_put_args.parse_args()
 		result = RockMod.query.filter_by(name=name).first()
