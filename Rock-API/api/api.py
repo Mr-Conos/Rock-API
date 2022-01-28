@@ -1,18 +1,28 @@
 from flask import Flask, request
 from flask_restful import Api, Resource, reqparse, abort, fields, marshal_with
 from flask_sqlalchemy import SQLAlchemy
+import uuid
+import random
 
 app = Flask(__name__)
 api = Api(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
 class RockMod(db.Model):
-	name = db.Column(db.String(50), nullable=False, primary_key=True)
+	id = db.Column(db.Integer, nullable=False, primary_key=True)
+	name = db.Column(db.String(50), nullable=False)
 	desc = db.Column(db.String, nullable=False)
 	image = db.Column(db.String, nullable=False)
 	rating = db.Column(db.Integer, nullable=False)
-
-
+db.create_all()
+def generate_id():
+	while True:
+		#id = str(uuid.uuid4())
+		id = random.randint(100, 10000)
+		result = RockMod.query.filter_by(id=id).first()
+		if result is None:
+			return id
+			
 
 rock_put_args = reqparse.RequestParser()
 rock_put_args.add_argument("name", type=str, help="Name of the rock is required. Please put rock name lmao", required=True)
@@ -48,15 +58,15 @@ class Rockss(Resource):
 
 	@marshal_with(resource_fields)
 	def put(self, name):
-		if request.remote_addr not in trusted_ips:
-		    abort(403)
-
+		#if request.remote_addr not in trusted_ips:
+		#    abort(403)
+		id = generate_id()
 		args = rock_put_args.parse_args()
 		result = RockMod.query.filter_by(name=name).first()
 		if result:
 			abort(409, message="Rock name taken...")
 
-		rockk = RockMod(name=args['name'], desc=args['desc'],image=args['image'],rating=args['rating'])
+		rockk = RockMod(id=id,name=args['name'], desc=args['desc'],image=args['image'],rating=args['rating'])
 		db.session.add(rockk)
 		db.session.commit()
 		return rockk, 201
