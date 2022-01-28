@@ -3,7 +3,7 @@
 
 
 ### What is Rock API?
-Rock API is an api that allows you to view rocks and get the ratings on them. I have a Discord bot which allows you to rate. This is honestly a stupid idea and I don't plan on making anything official. 
+Rock API is an api that allows you to view rocks and get the ratings on them. I have a Discord bot which allows you to rate.
 
 
 ### How do I use Rock API?
