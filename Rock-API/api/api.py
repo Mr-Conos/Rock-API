@@ -51,15 +51,25 @@ trusted_ips = ['144.172.83.214']
 class Rockss(Resource):
 	@marshal_with(resource_fields)
 	def get(self, name):
-		result = RockMod.query.filter_by(name=name).first()
-		if not result:
-			abort(404, message="Could not find rock with that name... :(")
-		return result
+		if name == "random":
+			randomresult = RockMod.query.all()
+			thing=random.choice(randomresult)
+			return thing
+		else:
+			result = RockMod.query.filter_by(name=name).first()
+			if not result:
+				abort(404, message="Could not find rock with that name... :(")
+			return result
 
 	@marshal_with(resource_fields)
 	def put(self, name):
-		#if request.remote_addr not in trusted_ips:
-		#    abort(403)
+		with open('Rock-API/api/nsfw.txt') as file:
+			contents = file.read()
+			if name in contents:
+				abort(409, message="This contains NSFW words. Please try again.")
+			else:
+
+				pass
 		id = generate_id()
 		args = rock_put_args.parse_args()
 		result = RockMod.query.filter_by(name=name).first()
@@ -94,7 +104,8 @@ class Rockss(Resource):
 	    return result
 
 
-api.add_resource(Rockss, "/rock/<string:name>")
 
+
+api.add_resource(Rockss, "/rock/<string:name>")
 if __name__ == "__main__":
-	app.run(debug=False)
+	app.run(debug=True)
