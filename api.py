@@ -88,8 +88,3 @@ api.add_resource(Rockss, "/rock/<string:name>")
 
 if __name__ == "__main__":
 	app.run(debug=False)
-
-api.add_resource(Rockss, "/rock/<string:name>")
-
-if __name__ == "__main__":
-	app.run(debug=False)
