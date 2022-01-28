@@ -62,11 +62,13 @@ class Rockss(Resource):
 
 	@marshal_with(resource_fields)
 	def put(self, name):
+		if request.remote_addr not in trusted_ips:
+		    abort(403)
 		id = generate_id()
 		args = rock_put_args.parse_args()
 		result = RockMod.query.filter_by(name=name).first()
 		if result:
-			abort(409, message="Rock name taken...")
+			abort(409, message=f"Rock name taken... IP:{request.remote_addr}")
 
 		rockk = RockMod(id=id,name=args['name'], desc=args['desc'],image=args['image'],rating=args['rating'])
 		db.session.add(rockk)
