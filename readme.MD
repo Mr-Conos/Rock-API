@@ -16,7 +16,9 @@ View the `tests` folder for more examples.
 
 ### Links
 🔗 - API - https://mrconos.pythonanywhere.com/rock/
+
 🔗 - Discord Server - https://discord.gg/3MTYRhMDZD
+
 🔗 - Docs - Coming Soon!!!
 
 💁‍♂️ DM me on Discord at Conos#9079 if you have more questions. :)
