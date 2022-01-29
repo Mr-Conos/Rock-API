@@ -3,5 +3,5 @@ import requests
 
 # Base Ip
 BASE = "https://mrconos.pythonanywhere.com/"           
-response = requests.put(BASE + "rock/" + "rock", {"name": "rock","desc":"Welcome to rock API where you can find rocks and rate them. This isn't what you think lol.", "image": "none","rating": 5})
+response = requests.put(BASE + "rock/" + "crunchy rock", {"name": "crunchy rock","desc":"Pretty crunchy rock tbh. Great for snacking, eating, drinking, and snacking!", "image": "none","rating": 4})
 print(response.json())
