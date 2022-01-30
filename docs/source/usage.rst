@@ -24,6 +24,9 @@ Searching For Rocks
 | GET    | `/<rock name>`| rock name                 |
 +--------+---------------+---------------------------+
 
+.. warning::
+    Rock names must be lowercase and the exact name of the rock you are searching for.
+
 Random Rocks
 --------------
 
