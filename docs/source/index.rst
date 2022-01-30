@@ -19,7 +19,7 @@ Are you looking for a place to start learning about Rock API? Read through some 
 
 * **Starting Out:**
    1. :doc:`introduction`
-   2. :doc:`API Referance`
+   2. :doc:`usage`
 * **Getting Help:**
    1. :doc:`api examples`
    2. :doc:`frequently asked questions`
@@ -29,6 +29,6 @@ Contents:
 ----------
 .. toctree::
    introduction
-   api referance
+   usage
    api examples
    faq
