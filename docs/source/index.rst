@@ -9,9 +9,9 @@ Welcome to the Rock API documentation!
    
 Features:
 ----------
-* Easily insert headings, text, links, lists, and more HTML elements
-* Easily embed videos and images
-* Add premade templates to your own webpages
+* Add rocks to the rock database
+* Learn about other rocks and their ratings
+* View images and explore random rocks
 
 Where to Begin?
 -----------------
