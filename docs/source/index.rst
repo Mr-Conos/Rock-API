@@ -1,14 +1,34 @@
-Welcome to the Rock-API documentation!
-=======================================
+Welcome to the Rock API documentation!
+========================================
 
-📰 What is Rock API?
+**Rock API** is an API that allows you to view rocks and find the ratings on them. However, this isn't a regular "rock finding" API... We have rocks like, `crunchy rock`, `moonrock`, and MANY more. This API was made for entertainment purposes. Use this API in your Discord bot for commands like `pls rock` or `!randomrock`. You can also use it in your website for.... something.
 
-Rock API is an API that allows you to view rocks and find the ratings on them. However, this isn't a regular "rock finding" API... We have rocks like, `crunchy rock`, `moonrock`, and MANY more. This API was made for entertainment purposes. Use this API in your Discord bot for commands like `pls rock` or `!randomrock`. You can also use it in your website for.... something.
+.. note::
+   This project is under active development. The documentation is
+   updated accordingly.
+   
+Features:
+----------
+* Easily insert headings, text, links, lists, and more HTML elements
+* Easily embed videos and images
+* Add premade templates to your own webpages
 
-📰 How do I use Rock API?
+Where to Begin?
+-----------------
+Are you looking for a place to start learning about Rock API? Read through some of the options below:
 
-API URL = https://mrconos.pythonanywhere.com/rock/<rock name> - Gives you a rock which returns a name, desc, image (link or none), and rating. The rating is supposed to be out of 5.
+* **Starting Out:**
+   1. :doc:`introduction`
+   2. :doc:`API Referance`
+* **Getting Help:**
+   1. :doc:`examples`
+   2. :doc:`frequently asked questions`
+   3. `Join the Discord Server https://discord.gg/3MTYRhMDZD`_
 
-Random URL = https://mrconos.pythonanywhere.com/rock/random - Gives you a random rock from the API.
-
-Visit our GitHub for more examples - (https://github.com/Mr-Conos/Rock-API
+Contents:
+----------
+.. toctree::
+   introduction
+   api referance
+   examples
+   faq
