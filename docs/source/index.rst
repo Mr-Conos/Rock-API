@@ -1,7 +1,7 @@
 Welcome to the Rock API documentation!
 ========================================
 
-.. image:: /rockapi.png
+.. image:: https://raw.githubusercontent.com/Mr-Conos/Rock-API/master/Rock-API/img/rock-api.png
   :width: 400
   :alt: Alternative text
 
