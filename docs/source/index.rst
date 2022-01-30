@@ -21,14 +21,14 @@ Are you looking for a place to start learning about Rock API? Read through some 
    1. :doc:`introduction`
    2. :doc:`API Referance`
 * **Getting Help:**
-   1. :doc:`examples`
+   1. :doc:`api examples`
    2. :doc:`frequently asked questions`
-   3. `Join the Discord Server https://discord.gg/3MTYRhMDZD`_
+   3. `Join the Discord Server <https://discord.gg/3MTYRhMDZD>`_
 
 Contents:
 ----------
 .. toctree::
    introduction
    api referance
-   examples
+   api examples
    faq
