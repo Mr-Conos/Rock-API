@@ -1,4 +1,4 @@
-Welcome to Rock-API documentation!
+Welcome to the Rock-API documentation!
 ===================================
 
 📰 What is Rock API?
