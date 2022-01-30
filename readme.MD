@@ -1,8 +1,7 @@
 <br/>
 
 <div align="center">
-    <img src="https://raw.githubusercontent.com/Rock-API/blob/master/Rock-API/img/rock-api.png?sanitize=true" alt="Rock API">
-
+    <img src="https://github.com/Mr-Conos/Rock-API/blob/master/Rock-API/img/rock-api.png?raw=true" alt="Rock API">
 <br/>
 
 </div> 
