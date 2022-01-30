@@ -1,7 +1,7 @@
 <br/>
 
 <div align="center">
-    <img src="https://github.com/Mr-Conos/Rock-API/blob/master/Rock-API/img/rock-api.png?raw=true" alt="Rock API">
+    <img width="400" src="https://github.com/Mr-Conos/Rock-API/blob/master/Rock-API/img/rock-api.png?raw=true" alt="Rock API">
 <br/>
 
 </div> 
