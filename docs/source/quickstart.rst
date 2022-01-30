@@ -10,7 +10,7 @@ Here you will learn how to use the Rock API to access information about rocks. T
 Python
 ---------
 
-This method will use the `requests library https://pypi.org/project/requests`_. 
+This method will use the `requests library <https://pypi.org/project/requests>`_. 
 
 First, install requests:
 
@@ -44,7 +44,7 @@ Let's go over what this code does.
 NodeJS
 ---------
 
-This method will use the `requests library https://www.npmjs.com/package/request`_. 
+This method will use the `requests library <https://www.npmjs.com/package/request>`_. 
 
 First, install requests:
 
