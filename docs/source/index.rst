@@ -1,5 +1,5 @@
 Welcome to the Rock-API documentation!
-===================================
+=======================================
 
 📰 What is Rock API?
 
