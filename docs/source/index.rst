@@ -7,8 +7,8 @@ Rock API is an API that allows you to view rocks and find the ratings on them. H
 
 📰 How do I use Rock API?
 
-URL = https://mrconos.pythonanywhere.com/rock/`<rock name>` - Gives you a rock which returns a name, desc, image (link or none), and rating. The rating is supposed to be out of 5.
+URL = https://mrconos.pythonanywhere.com/rock/<rock name> - Gives you a rock which returns a name, desc, image (link or none), and rating. The rating is supposed to be out of 5.
 
 Random URL = https://mrconos.pythonanywhere.com/rock/random - Gives you a random rock from the API.
 
-[Visit our GitHub for more examples](https://github.com/Mr-Conos/Rock-API)
+Visit our GitHub for more examples - (https://github.com/Mr-Conos/Rock-API
