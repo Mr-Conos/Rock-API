@@ -17,9 +17,6 @@
 ### What is Rock API?
 Rock API is an API that allows you to view rocks and find the ratings on them. However, this isn't a regular "rock finding" API... We have rocks like, `crunchy rock`, `moonrock`, and MANY more. This api we made for entertainment purposes. Use this API in your Discord bot for commands like `pls rock` or `!randomrock`. Use it in your website for... something. 
 
-### How do I post rocks to the API?
-Right now, we have a bot where you can post them. This may or may not change in the future. Also if you want to rate them, you would use the same bot. Join our Discord Server for examples! *Link below*
-
 ---
 
 ### Links
