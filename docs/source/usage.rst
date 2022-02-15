@@ -62,12 +62,16 @@ Rate Rocks
 | PATCH  | `/<rock name>`| rating : int              |
 +--------+---------------+---------------------------+
 
+
 **Python Example**
 
+
 .. code-block:: python
+  
   import requests
 
   BASE = "https://mrconos.pythonanywhere.com/"
 
   response = requests.patch(BASE + "rate/" + "test", {"rating":0})
   print(response.json())
+
