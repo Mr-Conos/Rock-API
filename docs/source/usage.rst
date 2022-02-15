@@ -72,6 +72,6 @@ Rate Rocks
 
   BASE = "https://mrconos.pythonanywhere.com/"
 
-  response = requests.patch(BASE + "rate/" + "test", {"rating":0})
+  response = requests.patch(BASE + "rate/" + "test", {"rating":3})
   print(response.json())
 
