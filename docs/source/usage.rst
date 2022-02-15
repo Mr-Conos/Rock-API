@@ -45,3 +45,29 @@ Rock Count
 +========+===============+===========================+
 | GET    | `/count`      | none                      |
 +--------+---------------+---------------------------+
+
+
+Rate Rocks
+--------------
+
+**NEW URL**
+
+.. code-block::
+
+       https://mrconos.pythonanywhere.com/rate/
+
++--------+---------------+---------------------------+
+| Type   | URL           | Parameters                |
++========+===============+===========================+
+| PATCH  | `/<rock name>`| rating : int              |
++--------+---------------+---------------------------+
+
+**Python Example**
+
+.. code-block:: python
+  import requests
+
+  BASE = "https://mrconos.pythonanywhere.com/"
+
+  response = requests.patch(BASE + "rate/" + "test", {"rating":0})
+  print(response.json())
