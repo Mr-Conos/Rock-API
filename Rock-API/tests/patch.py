@@ -1,6 +1,6 @@
 import requests
 
-BASE = "https://mrconos.pythonanywhere.com/"
+BASE = "http://127.0.0.1:5000/"
 
-response = requests.patch(BASE + "rock/" + "bruce rock", {"desc":"A bruce rock. Rock = Bruce. Bruce = Rock. Could take over the world of used 555 times."})
+response = requests.patch(BASE + "rate/" + "test", {"rating":0})
 print(response.json())
