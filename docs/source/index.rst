@@ -13,9 +13,9 @@ Welcome to the Rock API documentation!
    
 Features:
 ----------
-* Add rocks to the rock database
 * Learn about other rocks and their ratings
 * View images and explore random rocks
+* Rate the rocks
 
 Where to Begin?
 -----------------
