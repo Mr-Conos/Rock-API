@@ -88,8 +88,6 @@ class Rockss(Resource):
 
     @marshal_with(resource_fields)
     def patch(self, name):
-        if request.remote_addr not in trusted_ips:
-            abort(403)
         args = rock_update_args.parse_args()
         result = RockMod.query.filter_by(name=name).first()
         if not result:
@@ -126,8 +124,13 @@ class RateRock(Resource):
 
 		return "{message: \"Rated rock!\"}"
 
+class NoRock(Resource):
+    def get(self):
+        return "Welcome to Rock API! To get started, add the route `/rock/random` to get a random rock. For more help, view the GitHub at `https://github.com/Mr-Conos/Rock-API`"
 
 api.add_resource(Rockss, "/rock/<string:name>")
 api.add_resource(RateRock, "/rate/<string:name>")
+api.add_resource(NoRock, "/")
+
 if __name__ == "__main__":
     app.run(debug=True)
