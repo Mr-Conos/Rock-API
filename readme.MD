@@ -26,7 +26,6 @@ Rock API is an API that allows you to view rocks and find the ratings on them. H
 
 🔗 - Docs - https://rock.readthedocs.io/en/latest/
 
+⭐ Thank you to `snapGar#4786` *(Discord)* for drawing the base rocks and @BobBrown1 for the docs!!
+
 💁‍♂️ DM me on Discord at Conos#9079 if you have more questions or join the discord server. :)
-
-
-
