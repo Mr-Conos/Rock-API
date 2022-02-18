@@ -63,8 +63,13 @@ trusted_ips = ['144.172.83.214']
 class Rockss(Resource):
     @marshal_with(resource_fields)
     def get(self, name):
+        #Best rock - finds the rock with 5 stars and picks random
         if name == "random":
             randomresult = RockMod.query.all()
+            thing = random.choice(randomresult)
+            return thing
+        elif name == "top":
+            randomresult = RockMod.query.filter_by(rating=5).all()
             thing = random.choice(randomresult)
             return thing
         else:
