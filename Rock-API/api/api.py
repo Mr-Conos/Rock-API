@@ -22,11 +22,10 @@ db.create_all()
 
 def generate_id():
     while True:
-        #id = str(uuid.uuid4())
-        id = random.randint(100, 10000)
-        result = RockMod.query.filter_by(id=id).first()
+        ids = random.randint(100, 10000)
+        result = RockMod.query.filter_by(id=ids).first()
         if result is None:
-            return id
+            return ids
 
 
 rock_put_args = reqparse.RequestParser()
@@ -68,24 +67,24 @@ class Rockss(Resource):
             randomresult = RockMod.query.all()
             thing = random.choice(randomresult)
             return thing
-        elif name == "top":
+        if name == "top":
             randomresult = RockMod.query.filter_by(rating=5).all()
             thing = random.choice(randomresult)
             return thing
-        else:
-            result = RockMod.query.filter_by(name=name).first()
-            if not result:
-                abort(404, message="Could not find rock with that name... :(")
-            return result
+        
+        result = RockMod.query.filter_by(name=name).first()
+        if not result:
+            abort(404, message="Could not find rock with that name... :(")
+        return result
 
     @marshal_with(resource_fields)
     def put(self, name):
-        id = generate_id()
+        idss = generate_id()
         args = rock_put_args.parse_args()
         result = RockMod.query.filter_by(name=name).first()
         if result:
             abort(409, message=f"Rock name taken...")
-        rockk = RockMod(id=id, name=args['name'], desc=args['desc'],
+        rockk = RockMod(id=idss, name=args['name'], desc=args['desc'],
                         image=args['image'], rating=args['rating'])
         db.session.add(rockk)
         db.session.commit()
@@ -138,4 +137,4 @@ api.add_resource(RateRock, "/rate/<string:name>")
 api.add_resource(NoRock, "/")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
