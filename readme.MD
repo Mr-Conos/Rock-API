@@ -3,7 +3,7 @@
 <div align="center">
     <img width="400" src="https://github.com/Mr-Conos/Rock-API/blob/master/Rock-API/img/rock-api.png?raw=true" alt="Rock API">
     
-![Generic badge](https://img.shields.io/badge/Version-1.1.0-darkgrey.svg)
+![Generic badge](https://img.shields.io/badge/Version-1.1.3-darkgrey.svg)
 [![CodeFactor](https://www.codefactor.io/repository/github/mr-conos/rock-api/badge)](https://www.codefactor.io/repository/github/mr-conos/rock-api)
 ![Generic badge](https://badgen.net/uptime-robot/status/m790509669-da51f6216ce0fd9785b8732d)
 
