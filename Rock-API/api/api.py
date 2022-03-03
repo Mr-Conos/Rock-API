@@ -1,4 +1,5 @@
 from flask import Flask, request
+from flask import render_template, make_response
 from flask_restful import Api, Resource, reqparse, abort, fields, marshal_with
 from flask_sqlalchemy import SQLAlchemy
 import random
@@ -74,7 +75,10 @@ class Rockss(Resource):
         
         result = RockMod.query.filter_by(name=name).first()
         if not result:
-            abort(404, message="Could not find rock with that name... :(")
+            name = name.lower() + " rock"
+            result = RockMod.query.filter_by(name=name).first()
+            if not result:
+                abort(404, message="Could not find rock with that name... :(")
         return result
 
     @marshal_with(resource_fields)
@@ -130,11 +134,12 @@ class RateRock(Resource):
 
 class NoRock(Resource):
     def get(self):
-        return "Welcome to Rock API! To get started, add the route `/rock/random` to get a random rock. For more help, view the GitHub at `https://github.com/Mr-Conos/Rock-API`"
+        return "View the github at https://github.com/mr-conos/rock-api"
 
 api.add_resource(Rockss, "/rock/<string:name>")
 api.add_resource(RateRock, "/rate/<string:name>")
 api.add_resource(NoRock, "/")
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
+
