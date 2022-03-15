@@ -79,7 +79,7 @@ class Rockss(Resource):
             result = RockMod.query.filter_by(name=name).first()
             if not result:
                 abort(404, message="Could not find rock with that name... :(")
-        return result
+        return result, 200
 
     @marshal_with(resource_fields)
     def put(self, name):
@@ -123,18 +123,18 @@ class RateRock(Resource):
 			abort(404, message="Rock doesn't exist, cannot rate.")
 		if args['rating']:
 			if int(args['rating']) < 1:
-				return "{message: \"\Must be above 0.\"}"
+                abort(406, message="Must be above 0.")
 			if int(args['rating']) > 5:
-				return "{message: \"\Must be below 6.\"}"
+                abort(406, message="Must be below 6.")
 			result.rating = args['rating']
 
 		db.session.commit()
 
-		return "{message: \"Rated rock!\"}"
+		abort(201, message="Rated rock!")
 
 class NoRock(Resource):
     def get(self):
-        return "View the github at https://github.com/mr-conos/rock-api"
+        abort(200, message="View the github at https://github.com/mr-conos/rock-api")
 
 api.add_resource(Rockss, "/rock/<string:name>")
 api.add_resource(RateRock, "/rate/<string:name>")
