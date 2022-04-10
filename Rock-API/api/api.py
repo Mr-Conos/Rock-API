@@ -17,6 +17,9 @@ class RockMod(db.Model):
     image = db.Column(db.String, nullable=False)
     rating = db.Column(db.Integer, nullable=False)
 
+class RockRate(db.Model):
+    id = db.Column(db.Integer, nullable=False, primary_key=True)
+    rating = db.Column(db.Integer, nullable=False)
 
 db.create_all()
 
@@ -69,9 +72,11 @@ class Rockss(Resource):
             thing = random.choice(randomresult)
             return thing
         if name == "top":
-            randomresult = RockMod.query.filter_by(rating=5).all()
-            thing = random.choice(randomresult)
-            return thing
+            randomresult4 = RockMod.query.filter_by(rating=4).all()
+            randomresult5 = RockMod.query.filter_by(rating=5).all()
+            result = random.choice([randomresult4,randomresult5])
+            rock = random.choice(result)
+            return rock
         
         result = RockMod.query.filter_by(name=name).first()
         if not result:
@@ -116,21 +121,21 @@ class Rockss(Resource):
 
 
 class RateRock(Resource):
-	def patch(self, name):
-		args = rock_update_args.parse_args()
-		result = RockMod.query.filter_by(name=name).first()
-		if not result:
-			abort(404, message="Rock doesn't exist, cannot rate.")
-		if args['rating']:
-			if int(args['rating']) < 1:
+    def patch(self, name):
+        args = rock_update_args.parse_args()
+        result = RockMod.query.filter_by(name=name).first()
+        if not result:
+            abort(404, message="Rock doesn't exist, cannot rate.")
+        if args['rating']:
+            if int(args['rating']) < 1:
                 abort(406, message="Must be above 0.")
-			if int(args['rating']) > 5:
+            if int(args['rating']) > 5:
                 abort(406, message="Must be below 6.")
-			result.rating = args['rating']
+        result.rating = args['rating']
 
-		db.session.commit()
+        db.session.commit()
 
-		abort(201, message="Rated rock!")
+        abort(201, message="Rated rock!")
 
 class NoRock(Resource):
     def get(self):
