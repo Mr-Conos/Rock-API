@@ -131,11 +131,6 @@ class RateRock(Resource):
                 abort(406, message="Must be above 0.")
             if int(args['rating']) > 5:
                 abort(406, message="Must be below 6.")
-        result.rating = args['rating']
-
-        db.session.commit()
-
-        abort(201, message="Rated rock!")
 
 class NoRock(Resource):
     def get(self):
