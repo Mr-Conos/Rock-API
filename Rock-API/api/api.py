@@ -140,6 +140,3 @@ class NoRock(Resource):
 api.add_resource(Rockss, "/rock/<string:name>")
 api.add_resource(RateRock, "/rate/<string:name>")
 api.add_resource(NoRock, "/")
-
-if __name__ == "__main__":
-    gunicorn.run("api:app",host="0.0.0.0", port= 5000)
