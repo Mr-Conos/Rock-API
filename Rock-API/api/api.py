@@ -2,6 +2,7 @@ from flask import Flask, request
 from flask import render_template, make_response
 from flask_restful import Api, Resource, reqparse, abort, fields, marshal_with
 from flask_sqlalchemy import SQLAlchemy
+import gunicorn
 import random
 
 app = Flask(__name__)
@@ -141,4 +142,4 @@ api.add_resource(RateRock, "/rate/<string:name>")
 api.add_resource(NoRock, "/")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port= 5000)
+    gunicorn.run("api:app",host="0.0.0.0", port= 5000)
