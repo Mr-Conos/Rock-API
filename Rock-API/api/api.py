@@ -135,7 +135,7 @@ class RateRock(Resource):
 
 class NoRock(Resource):
     def get(self):
-        abort(200, message="View the github at https://github.com/mr-conos/rock-api")
+        abort(404, message="View the github at https://github.com/mr-conos/rock-api")
 
 api.add_resource(Rockss, "/rock/<string:name>")
 api.add_resource(RateRock, "/rate/<string:name>")
