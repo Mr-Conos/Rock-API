@@ -13,7 +13,7 @@ Base URL
 
 .. code-block::
 
-       https://mrconos.pythonanywhere.com/rock/
+       https://rockapi.apiworks.tech/rock/
        
 Searching For Rocks
 ---------------------
@@ -67,7 +67,7 @@ Rate Rocks
 
 .. code-block::
 
-       https://mrconos.pythonanywhere.com/rate/
+       https://rockapi.apiworks.tech/rate/
 
 +--------+---------------+---------------------------+
 | Type   | URL           | Parameters                |
@@ -83,7 +83,7 @@ Rate Rocks
   
   import requests
 
-  BASE = "https://mrconos.pythonanywhere.com/"
+  BASE = "https://rockapi.apiworks.tech/"
 
   response = requests.patch(BASE + "rate/" + "test", {"rating":3})
   print(response.json())
