@@ -13,7 +13,7 @@ db = SQLAlchemy(app)
 def after_request(response):
     response.headers.add('Access-Control-Allow-Origin', '*')
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
-    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST')
     return response
 
 class RockMod(db.Model):
@@ -93,7 +93,7 @@ class Rockss(Resource):
         return result, 200
 
     @marshal_with(resource_fields)
-    def put(self, name):
+    def post(self, name):
         if not request.headers.getlist("X-Forwarded-For"):
             ip = request.remote_addr
         else:
