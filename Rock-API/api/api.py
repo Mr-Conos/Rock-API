@@ -84,18 +84,17 @@ class Rockss(Resource):
             name = name.lower() + " rock"
             result = RockMod.query.filter_by(name=name).first()
             if not result:
-                abort(404, message="Could not find rock with that name... :(")
+            	abort(404, message="Could not find rock with that name... :(")
         return result, 200
 
     @marshal_with(resource_fields)
     def put(self, name):
         if not request.headers.getlist("X-Forwarded-For"):
-		    ip = request.remote_addr
-	    else:
-	    	ip = request.headers.getlist("X-Forwarded-For")[0]
-
-	    if ip not in trusted_ips:
-	        abort(403)
+		ip = request.remote_addr
+	else:
+		ip = request.headers.getlist("X-Forwarded-For")[0]
+	if ip not in trusted_ips:
+		abort(403)
         idss = generate_id()
         args = rock_put_args.parse_args()
         result = RockMod.query.filter_by(name=name).first()
@@ -110,12 +109,12 @@ class Rockss(Resource):
     @marshal_with(resource_fields)
     def patch(self, name):
         if not request.headers.getlist("X-Forwarded-For"):
-		    ip = request.remote_addr
-	    else:
-	    	ip = request.headers.getlist("X-Forwarded-For")[0]
+		ip = request.remote_addr
+	else:
+		ip = request.headers.getlist("X-Forwarded-For")[0]
 
-	    if ip not in trusted_ips:
-	        abort(403)
+	if ip not in trusted_ips:
+		abort(403)
         args = rock_update_args.parse_args()
         result = RockMod.query.filter_by(name=name).first()
         if not result:
