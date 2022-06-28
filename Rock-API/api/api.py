@@ -65,10 +65,7 @@ resource_fields = {
     'rating': fields.Integer
 }
 
-
 trusted_ips = ['144.172.83.214']
-
-
 class Rockss(Resource):
     @marshal_with(resource_fields)
     def get(self, name):
