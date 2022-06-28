@@ -17,12 +17,12 @@
 ---
 
 ### What is Rock API?
-Rock API is an API that allows you to view rocks and find the ratings on them. However, this isn't a regular "rock finding" API... We have rocks like, `crunchy rock`, `falling rock`, and MANY more. This api we made for entertainment purposes. Use this API in your Discord bot for commands like `pls rock` or `!randomrock`. Use it in your website for... something. 
+Rock API is an API that allows you to view rocks and find the ratings on them. However, this isn't a regular "rock finding" API... We have rocks like, `glow rock`, `falling rock`, and MANY more. This api we made for entertainment purposes. Use this API in your Discord bot for commands like `pls rock` or `!randomrock` or even in your website for... something. 
 
 ---
 
 ### Links
-🔗 - API - https://mrconos.pythonanywhere.com/rock/
+🔗 - API - https://rockapi.apiworks.tech
 
 🔗 - Discord Server - https://discord.gg/3MTYRhMDZD
 
