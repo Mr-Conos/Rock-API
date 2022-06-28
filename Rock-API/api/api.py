@@ -22,7 +22,7 @@ class RockRate(db.Model):
     id = db.Column(db.Integer, nullable=False, primary_key=True)
     rating = db.Column(db.Integer, nullable=False)
 
-#db.create_all()
+db.create_all()
 
 
 def generate_id():
