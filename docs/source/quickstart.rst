@@ -24,7 +24,7 @@ Now, use the following code in your Python file:
 
    import requests
 
-   url = "mrconos.pythonanywhere.com/rock/random"
+   url = "rockapi.apiworks.tech/rock/random"
 
    payload={}
    headers = {}
@@ -59,7 +59,7 @@ Now, use the following code in your NodeJS file:
   var request = require('request');
   var options = {
     'method': 'GET',
-    'url': 'mrconos.pythonanywhere.com/rock/random',
+    'url': 'rockapi.apiworks.tech/rock/random',
     'headers': {
     }
   };
