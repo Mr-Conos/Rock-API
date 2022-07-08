@@ -4,10 +4,11 @@ from flask_restful import Api, Resource, reqparse, abort, fields, marshal_with
 from flask_sqlalchemy import SQLAlchemy
 import gunicorn
 import random
+import os
 
 app = Flask(__name__)
 api = Api(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DB_CONNECTION")
 db = SQLAlchemy(app)
 
 
@@ -22,7 +23,7 @@ class RockRate(db.Model):
     id = db.Column(db.Integer, nullable=False, primary_key=True)
     rating = db.Column(db.Integer, nullable=False)
 
-#db.create_all()
+db.create_all()
 
 
 def generate_id():
@@ -78,6 +79,12 @@ class Rockss(Resource):
             result = random.choice([randomresult4,randomresult5])
             rock = random.choice(result)
             return rock
+        if name == "count":
+	        result = RockMod.query.all()
+	        count = 0
+	        for rock in result:
+	            count += 1
+	        return count
         
         result = RockMod.query.filter_by(name=name).first()
         if not result:
@@ -147,7 +154,7 @@ class RateRock(Resource):
 
 class NoRock(Resource):
     def get(self):
-        abort(404, message="View the github at https://github.com/mr-conos/rock-api")
+        abort(404, message="Rock API is now apart of apiWorks! Please continue using this api as normal.")
 
 api.add_resource(Rockss, "/rock/<string:name>")
 api.add_resource(RateRock, "/rate/<string:name>")
