@@ -5,3 +5,4 @@ uvicorn==0.18.3
 fastapi-jwt-auth==0.5.0
 pydantic==1.10.2
 fastapi==0.85.0
+Jinja2==3.1.2
