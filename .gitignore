@@ -2,7 +2,8 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+Rock-API/api/__pycache__/
+Rock-API/api/tools/__pycache__/
 # C extensions
 *.so
 
