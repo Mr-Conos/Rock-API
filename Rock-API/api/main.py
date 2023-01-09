@@ -10,9 +10,9 @@ from typing import Union
 from fastapi_jwt_auth import AuthJWT
 from fastapi_jwt_auth.exceptions import AuthJWTException
 from pydantic import BaseModel
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 import os
-load_dotenv()
+#load_dotenv()
 models.Base.metadata.create_all(bind=engine)
 Rock_API = FastAPI(docs_url=None)
 templates = Jinja2Templates(directory="./Rock-API/api/templates")
