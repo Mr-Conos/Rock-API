@@ -15,7 +15,7 @@ import os
 #load_dotenv()
 models.Base.metadata.create_all(bind=engine)
 Rock_API = FastAPI(docs_url=None)
-templates = Jinja2Templates(directory="./Rock-API/api/templates")
+templates = Jinja2Templates(directory="./templates")
 
 class Settings(BaseModel):
     authjwt_secret_key: str = os.getenv('KEY')
