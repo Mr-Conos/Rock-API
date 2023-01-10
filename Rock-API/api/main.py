@@ -11,13 +11,10 @@ from fastapi_jwt_auth import AuthJWT
 from fastapi_jwt_auth.exceptions import AuthJWTException
 from pydantic import BaseModel
 import os
-try: # railway doesnt have access to the env 
-    from dotenv import load_dotenv
-    load_dotenv()
-    print("loaded")
-except:
-    print("not loaded")
-    pass
+
+from dotenv import load_dotenv
+load_dotenv()
+
 models.Base.metadata.create_all(bind=engine)
 Rock_API = FastAPI(docs_url=None)
 templates = Jinja2Templates(directory="./templates")
@@ -68,7 +65,7 @@ def login(request: Request,username: str = Form(...),password: str = Form(...), 
 
     Authorize.set_access_cookies(access_token)
     Authorize.set_refresh_cookies(refresh_token)
-    return RedirectResponse(request.url_for('protected'), status_code=status.HTTP_303_SEE_OTHER)    
+    return RedirectResponse(request.url_for('panel'), status_code=status.HTTP_303_SEE_OTHER)    
 
 @Rock_API.get('/refresh')
 def refresh(Authorize: AuthJWT = Depends()):
@@ -88,7 +85,7 @@ def logout(Authorize: AuthJWT = Depends()):
     return {"msg":"Successfully logged out"}
 
 @Rock_API.get('/panel')
-def protected(request: Request,Authorize: AuthJWT = Depends()):
+def panel(request: Request,Authorize: AuthJWT = Depends()):
 
     Authorize.jwt_required()
 
