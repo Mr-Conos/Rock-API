@@ -92,4 +92,4 @@ def get_rock(rock_name,db: Session = Depends(get_db)):
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:Rock_API", host="127.0.0.1", port=os.getenv("PORT",default=8000))
+    uvicorn.run("main:Rock_API", host="0.0.0.0", port=os.getenv("PORT",default=8000))
