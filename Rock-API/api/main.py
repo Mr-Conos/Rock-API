@@ -12,9 +12,11 @@ from fastapi_jwt_auth.exceptions import AuthJWTException
 from pydantic import BaseModel
 import os
 try: # railway doesnt have access to the env 
+    print("loaded")
     from dotenv import load_dotenv
     load_dotenv()
-except: 
+except:
+    print("not loaded")
     pass
 models.Base.metadata.create_all(bind=engine)
 Rock_API = FastAPI(docs_url=None)
@@ -92,4 +94,4 @@ def get_rock(rock_name,db: Session = Depends(get_db)):
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:Rock_API", host="0.0.0.0", port=os.getenv("PORT",default=8000))
+    uvicorn.run("main:Rock_API", host="127.0.0.1", port=os.getenv("PORT",default=8000))
