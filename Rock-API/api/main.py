@@ -11,9 +11,11 @@ from fastapi_jwt_auth import AuthJWT
 from fastapi_jwt_auth.exceptions import AuthJWTException
 from pydantic import BaseModel
 import os
-
-from dotenv import load_dotenv
-load_dotenv()
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except:
+    pass
 
 models.Base.metadata.create_all(bind=engine)
 Rock_API = FastAPI(docs_url=None)
@@ -65,7 +67,7 @@ def login(request: Request,username: str = Form(...),password: str = Form(...), 
 
     Authorize.set_access_cookies(access_token)
     Authorize.set_refresh_cookies(refresh_token)
-    return RedirectResponse(request.url_for('panel'), status_code=status.HTTP_303_SEE_OTHER)    
+    return "Logged in: go to /panel"  
 
 @Rock_API.get('/refresh')
 def refresh(Authorize: AuthJWT = Depends()):
