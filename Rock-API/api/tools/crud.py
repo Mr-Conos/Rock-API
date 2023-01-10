@@ -16,7 +16,10 @@ def random_rock_by_tag(tag,db:Session):
     rock_list = []
     for i in tagg:
         rock_list.append(db.query(models.tags).filter(models.tags.tags == str(i.lower())).all())
-    choice_of_rock = random.choice(random.choice(rock_list))
+    rand_tag = random.choice(rock_list)
+    if rand_tag == []:
+        return 404
+    choice_of_rock = random.choice(rand_tag)
     return db.query(models.rocks).filter(models.rocks.name == choice_of_rock.name).first()
 
 def search_rock(rock_name,db:Session):

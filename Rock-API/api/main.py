@@ -1,6 +1,6 @@
 import uvicorn
-from fastapi import FastAPI, HTTPException, Depends, Request,Form
-from fastapi.responses import JSONResponse
+from fastapi import FastAPI, HTTPException, Depends, Request,Form,status
+from fastapi.responses import JSONResponse, RedirectResponse
 from pydantic import BaseModel
 from fastapi.templating import Jinja2Templates
 from tools import crud, models
@@ -10,9 +10,12 @@ from typing import Union
 from fastapi_jwt_auth import AuthJWT
 from fastapi_jwt_auth.exceptions import AuthJWTException
 from pydantic import BaseModel
-#from dotenv import load_dotenv
 import os
-#load_dotenv()
+try: # railway doesnt have access to the env 
+    from dotenv import load_dotenv
+    load_dotenv()
+except: 
+    pass
 models.Base.metadata.create_all(bind=engine)
 Rock_API = FastAPI(docs_url=None)
 templates = Jinja2Templates(directory="./templates")
@@ -51,7 +54,7 @@ def login(request: Request):
     return templates.TemplateResponse('login.html',{"request": request})
 
 @Rock_API.post('/login')
-def login(username: str = Form(...),password: str = Form(...), Authorize: AuthJWT = Depends(),db: Session = Depends(get_db)):
+def login(request: Request,username: str = Form(...),password: str = Form(...), Authorize: AuthJWT = Depends(),db: Session = Depends(get_db)):
     is_user = crud.query_user(db,username)
     if not is_user:
         raise HTTPException(status_code=401,detail="Bad username or password")
@@ -63,20 +66,22 @@ def login(username: str = Form(...),password: str = Form(...), Authorize: AuthJW
 
     Authorize.set_access_cookies(access_token)
     Authorize.set_refresh_cookies(refresh_token)
-    return {"msg":"Successfully login"}
+    return RedirectResponse(request.url_for('protected'), status_code=status.HTTP_303_SEE_OTHER)    
 
-@Rock_API.get('/protected')
-def protected(Authorize: AuthJWT = Depends()):
+
+@Rock_API.get('/panel')
+def protected(request: Request,Authorize: AuthJWT = Depends()):
 
     Authorize.jwt_required()
 
     current_user = Authorize.get_jwt_subject()
-    return {"user": current_user}
+    return templates.TemplateResponse('admin.html',{"request": request,"user":current_user})
 
 @Rock_API.get('/rock/random')
 def get_rock(tags: Union[str, None] = None,db: Session = Depends(get_db)):
     if tags:
-        return crud.random_rock_by_tag(tags,db)
+        rock = crud.random_rock_by_tag(tags,db)
+        return {"msg": "Rock not found by tag. Try entering a valid tag."} if rock == 404 else rock
     return crud.random_rock(db)
 
 @Rock_API.get('/rock/{rock_name}')
@@ -87,4 +92,4 @@ def get_rock(rock_name,db: Session = Depends(get_db)):
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:Rock_API", host="0.0.0.0", port=os.getenv("PORT",default=5000))
+    uvicorn.run("main:Rock_API", host="127.0.0.1", port=os.getenv("PORT",default=8000))
