@@ -11,6 +11,7 @@ from fastapi_jwt_auth import AuthJWT
 from fastapi_jwt_auth.exceptions import AuthJWTException
 from pydantic import BaseModel
 import os
+import bleach
 try:
     from dotenv import load_dotenv
     load_dotenv()
@@ -56,6 +57,7 @@ def login(request: Request):
 
 @Rock_API.post('/login')
 def login(request: Request,username: str = Form(...),password: str = Form(...), Authorize: AuthJWT = Depends(),db: Session = Depends(get_db)):
+    username = bleach.clean(username)
     is_user = crud.query_user(db,username)
     if not is_user:
         raise HTTPException(status_code=401,detail="Bad username or password")
@@ -94,19 +96,35 @@ def panel(request: Request,Authorize: AuthJWT = Depends()):
     current_user = Authorize.get_jwt_subject()
     return templates.TemplateResponse('admin.html',{"request": request,"user":current_user})
 
+
+
+@Rock_API.post('/add_rock')
+def add_rock(name: str = Form(...),description: str = Form(...),image_url: str = Form(...),Authorize: AuthJWT = Depends(),db: Session = Depends(get_db)):
+    rock = crud.add_rock(name,description,image_url,db)
+    return JSONResponse(status_code=200,content={"msg":"Added"})
+
+@Rock_API.patch('/update_rock')
+def update_roc(name: str = Form(...),drop: str = Form(...),update: str = Form(...),Authorize: AuthJWT = Depends(),db: Session = Depends(get_db)):
+    rock = crud.update_rock(name,drop,update,db)
+    return JSONResponse(status_code=200,content={"msg":"Updated"})
+
 @Rock_API.get('/rock/random')
 def get_rock(tags: Union[str, None] = None,db: Session = Depends(get_db)):
     if tags:
         rock = crud.random_rock_by_tag(tags,db)
-        return {"msg": "Rock not found by tag. Try entering a valid tag."} if rock == 404 else rock
+        return {"msg": "Rock not found by tag. Try entering a valid tag."} if rock == 404 else JSONResponse(status_code=200,content={"name": rock.name,"description": rock.description,"image":rock.image_url})
     return crud.random_rock(db)
 
 @Rock_API.get('/rock/{rock_name}')
 def get_rock(rock_name,db: Session = Depends(get_db)):
-    return crud.search_rock(rock_name,db)
+    rock = crud.search_rock(rock_name,db)
+    
+    if not rock:
+        return JSONResponse(status_code=404,content={"msg":"Rock not found"})
+    return JSONResponse(status_code=200,content={"name": rock.name,"description": rock.description,"image":rock.image_url})
 
 
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:Rock_API", host="0.0.0.0", port=os.getenv("PORT",default=8000))
+    uvicorn.run("main:Rock_API", host="127.0.0.1", port=os.getenv("PORT",default=8000))

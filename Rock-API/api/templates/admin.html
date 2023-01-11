@@ -10,8 +10,78 @@
     <div class="content">
     <h1>Rock API Panel</h1>
     <h1>Welcome {{user}}</h1>
+
+    <form autocomplete="off" method="post" id="rock1">
+        <input type="text" id="name" name="name" placeholder="Rock name" required>
+        <input type="text" id="description" name="description" placeholder="Description" required>
+        <input type="url" id="image_url" name="image_url" placeholder="Image url" required>
+        <input type="button" value="Add Rock" onclick="post_rock()">
+    </form>
+
+    <p id="result-post"></p>
+
+    <form autocomplete="off" method="patch" id="rock22">
+        <input type="text" id="name" name="name" placeholder="Rock name" required>
+        <select id="drop" name="drop" size="1" required> 
+            <option value="name">Rock name</option>
+            <option value="description">Description</option>
+            <option value="image_url">Link</option>
+          </select>
+        <input type="text" id="update" name="update" placeholder="Updated value" required>
+        <input type="button" value="Update Rock" onclick="update_rock()">
+    </form>
+
+    <p id="patch-post"></p>
+
+    <form autocomplete="off" method="get" id="rock2">
+        <input type="text" id="name" name="name" placeholder="Rock Name" required>
+        <input type="button" value="View Rock" onclick="view_rock_funt()">
+    </form>
+
+    <div id="result2"></div>
+    <div id="imgclass"></div>
+    <img id="imgg">
+
+    <form autocomplete="off" method="delete" action="/view_rock" id="rock3">
+        <input type="text" id="name" name="name" placeholder="Rock Name" required>
+        <input type="button" value="Delete Rock">
+    </form>
+
+    <p id="result-delete"></p>
+
     </div>
 
+
+    <script>
+        function view_rock_funt() {
+            const prev_img = document.getElementById("imgg")
+            prev_img.remove();
+            var formElement = document.getElementById('rock2');
+            var data = new FormData(formElement);
+            let api_re = fetch(`/rock/${data.get("name")}`, {method: 'GET'})
+            const img = document.createElement("img");
+            img.id = 'imgg';img.width = 200;img.height = 200;
+            api_re.then(res =>res.text()).then(d => document.getElementById("result2").innerHTML = d).then(d => img.src = JSON.parse(d)['image'])
+            const box = document.getElementById('imgclass');
+            box.appendChild(img);
+
+        }
+        
+
+        function post_rock() {
+            var formElement = document.getElementById('rock1');
+            var data = new FormData(formElement);
+            fetch('/add_rock', {method: 'POST',body: data,})
+            .then(resp => resp.text()).then(data => {document.getElementById("result-post").innerHTML = data;}).catch(error => {console.error(error);});
+        }
+
+        function update_rock() {
+            var formElement = document.getElementById('rock22');
+            var data = new FormData(formElement);
+            fetch('/update_rock', {method: 'PATCH',body: data,})
+            .then(resp => resp.text()).then(data => {document.getElementById("patch-post").innerHTML = data;}).catch(error => {console.error(error);});
+        }
+     </script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
@@ -23,7 +93,37 @@
             margin-left: 40px;
             margin-top: 30px;
         }
+        p {
+            margin-top: 10;
+            margin-bottom: 3;
+        }
+        input[type=text], input[type=url],select {
+            width: 20%;
+            padding: 12px 20px;
+            margin: 8px 0;
 
+            border: 1px solid #b7a89a;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=button] {
+            width: 15%;
+            background-color: #b7a89a;
+            color: white;
+            padding: 12px 10px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 715px) {
+            input[type=text], input[type=url],input[type=button] {
+                width: 50%;
+            }
+
+        }
     </style>
 </body>
 </html>
