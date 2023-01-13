@@ -5,6 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock API</title>
+
+
+    <meta name="description" content="Rocks" />
+    <meta name="keywords" content="API,api,rock,cartoon,rocks" />
+    <meta property="og:title" content="Rock API" />
+    <meta property="og:description" content="Website for docs for Rock API" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://cdn.apiworks.tech/rockapi/rock-api.png" />
+    <meta property="og:image:secure_url" content="https://cdn.apiworks.tech/rockapi/rock-api.png" /> 
+    <meta property="og:image:type" content="image/png" /> 
+  
+    <meta name="theme-color" content="#2f3136" />
 </head>
 
 <!--I know, the html is bad-->
@@ -55,14 +67,14 @@
         <p>Returns a random rock in JSON format with the following keys: name, description, and image_url, all of which are strings.</p>
         <table class="styled-table">
             <thead><tr><th>Type</th><th>Returns</th><th>Output Example</th><th>Source</th></tr></thead>
-            <tbody><tr><td>GET</td><td>200 or 404</td><td>{"name":"rock",<br>"description":"description",<br>"image_url":"img url"}</td><td>Link</td></tr></tbody>
+            <tbody><tr><td>GET</td><td>200 or 404</td><td>{"name":"rock",<br>"description":"description",<br>"image_url":"img url"}</td><td><a href="https://github.com/Mr-Conos/Rock-API/blob/master/Rock-API/api/main.py#L111">Link</a></td></tr></tbody>
         </table>
         <h3 style="margin-top: 25px">Get Random Rock with Tag</h3>
         <pre>URL: <code>https://rockapi.apiworks.tech/rock/random?tags=tag here</code></pre>
         <p>Add tags separated by a comma. Ex: rock,party,pun. If a tag is not found, it will return a 404.</p>
         <table class="styled-table">
             <thead><tr><th>Type</th><th>Returns</th><th>Input Example</th><th>Source</th></tr></thead>
-            <tbody><tr><td>GET</td><td>200 or 404</td><td>/rock/random?tags=rock,party,pun</td><td>Link</td></tr></tbody>
+            <tbody><tr><td>GET</td><td>200 or 404</td><td>/rock/random?tags=rock,party,pun</td><td><a href="https://github.com/Mr-Conos/Rock-API/blob/master/Rock-API/api/main.py#L114">Link</a></td></tr></tbody>
         </table>
 
 
@@ -71,7 +83,7 @@
         <p>If a rock is not found, it will return a 404.</p>
         <table class="styled-table">
             <thead><tr><th>Type</th><th>Returns</th><th>Input Example</th><th>Source</th></tr></thead>
-            <tbody><tr><td>GET</td><td>200 or 404</td><td>/rock/music rock</td><td>Link</td></tr></tbody>
+            <tbody><tr><td>GET</td><td>200 or 404</td><td>/rock/music rock</td><td><a href="https://github.com/Mr-Conos/Rock-API/blob/master/Rock-API/api/main.py#L118">Link</a></td></tr></tbody>
         </table>
         
     </div>
