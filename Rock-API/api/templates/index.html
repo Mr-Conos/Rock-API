@@ -6,7 +6,234 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock API</title>
 </head>
+
+<!--I know, the html is bad-->
 <body>
-    <h1>Rock API</h1>
+    <nav>
+        <div class="content">
+          <div class="logo">
+            <h1>Rock API</h1>
+          </div>
+          <div class="list">
+    
+            <li><a href="" target="_blank">Docs</a></li>
+    
+          </div>           
+        </div>
+    </nav>
+
+    <img class="rocksss" style="width: 200px;height: auto;position: absolute;top: 200px;left: 50px;transform: rotate(-20deg);" src="https://cdn.apiworks.tech/rockapi/trans/wise_rock_trans.png">
+    <img class="rocksss" style="width: 200px;height: auto;position: absolute;top: 200px;right: 50px;transform: rotate(20deg);" src="https://cdn.apiworks.tech/rockapi/trans/happy_rock_trans.png">
+    <img class="rocksss" style="width: 200px;height: auto;position: absolute;top: 1100px;right: 50px;transform: rotate(-10deg);" src="https://cdn.apiworks.tech/rockapi/trans/fancy_rok-trans.png">
+    <img class="rocksss" style="width: 250px;height: auto;position: absolute;top: 1600px;right: 45px;transform: rotate(10deg);" src="https://cdn.apiworks.tech/rockapi/trans/rock_ballon-trans.png">
+
+
+
+
+    <img class="rock-img" src="https://cdn.apiworks.tech/rockapi/rock-api.png"/>
+    <h2>An API for well... ROCKS!</h2>
+    <div class="badges">
+        <img class="b" src="https://img.shields.io/badge/Version-2.0.0-darkgrey.svg">
+        <img class="b" src="https://badgen.net/uptime-robot/status/m790509669-da51f6216ce0fd9785b8732d">
+    </div>
+    <main>
+    <div class="des">
+        <h1 class="header2"><u>What is Rock API?</u></h1>
+        <p>Rock API is an API that gives you ROCKS. However, 
+            this isn't a regular "rock finding" API... We have rocks like, glow rock, falling rock, 
+            and MANY more. This api was made for entertainment purposes. Use this API in your Discord 
+            bot for commands like pls rock or !randomrock or even in your website for... something.
+        </p>
+    </div>
+    <img class="rockssss" src="https://cdn.apiworks.tech/rockapi/trans/party_rock_trans.png">
+    <div id="docs">
+        <h1 class="header2"><u>API Docs</u></h1>
+
+        <h4>Covering different endpoints</h4>
+        <h3 style="margin-top: 25px">Get Random Rock</h3>
+        <pre>URL: <code>https://rockapi.apiworks.tech/rock/random</code></pre>
+        <p>Returns a random rock in JSON format with the following keys: name, description, and image_url, all of which are strings.</p>
+        <table class="styled-table">
+            <thead><tr><th>Type</th><th>Returns</th><th>Output Example</th><th>Source</th></tr></thead>
+            <tbody><tr><td>GET</td><td>200 or 404</td><td>{"name":"rock",<br>"description":"description",<br>"image_url":"img url"}</td><td>Link</td></tr></tbody>
+        </table>
+        <h3 style="margin-top: 25px">Get Random Rock with Tag</h3>
+        <pre>URL: <code>https://rockapi.apiworks.tech/rock/random?tags=tag here</code></pre>
+        <p>Add tags separated by a comma. Ex: rock,party,pun. If a tag is not found, it will return a 404.</p>
+        <table class="styled-table">
+            <thead><tr><th>Type</th><th>Returns</th><th>Input Example</th><th>Source</th></tr></thead>
+            <tbody><tr><td>GET</td><td>200 or 404</td><td>/rock/random?tags=rock,party,pun</td><td>Link</td></tr></tbody>
+        </table>
+
+
+        <h3 style="margin-top: 25px">Search Rock</h3>
+        <pre>URL: <code>https://rockapi.apiworks.tech/rock/rock here</code></pre>
+        <p>If a rock is not found, it will return a 404.</p>
+        <table class="styled-table">
+            <thead><tr><th>Type</th><th>Returns</th><th>Input Example</th><th>Source</th></tr></thead>
+            <tbody><tr><td>GET</td><td>200 or 404</td><td>/rock/music rock</td><td>Link</td></tr></tbody>
+        </table>
+        
+    </div>
+
+    <h1 class="header2"><u>Links</u></h1>
+    <a href="https://discord.gg/EPQQDAJjGv">Discord Server</a>
+    <a style="margin-bottom:40px"href="https://discord.gg/EPQQDAJjGv">GitHub</a>
+
+    </main>
+
+    <footer>
+        <h5>Rocks | Sorry about the bad styling.</h5>
+    </footer>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: 'Roboto Sans', sans-serif;
+        }
+        body {
+            background-color: white;
+        }
+        nav {
+            width: 100%;
+            background: #484b5c;
+            padding: 10px 0;
+        }
+
+        .list {
+            display: inline-flex;
+        }
+
+        .list li {
+            padding: 0 18px;
+            list-style: none;
+        }
+
+        .list li a {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .content {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 30px;
+            justify-content: space-between;                    
+        }
+
+        .logo h1 {
+            color: white;
+            font-size: 30px;
+            font-weight: 900;
+        }
+
+        .rock-img {
+            width: 300px;
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 40px;
+        }
+
+        .rockssss {
+            width: 150px;
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        h2 {
+            text-align: center;
+            margin:20px;
+        }
+
+        .badges {
+            display: flex;
+            justify-content: center;
+        }
+        main {
+            min-height: 100%;
+            display: grid;
+            margin: 0 auto;
+            max-width: 900px;
+            font-size: 18px;
+            padding: 0 10px;
+            line-height: 1.7;
+        }
+
+        .header2 {
+            margin-top: 50px;
+            color: #d0baa6
+        }
+
+        code {
+            background: #ffeff0;
+            word-wrap: break-word;
+            box-decoration-break: clone;
+            padding: .1rem .3rem .2rem;
+            border-radius: .2rem;
+        }
+
+        .styled-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            min-width: 200px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            
+        }
+        .styled-table thead tr {
+            background-color: #4f5165;
+            color: #ffffff;
+            text-align: left;
+        }
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+        }
+        #docs {
+            background-color: white;
+            border-radius: 20px;
+            margin-top: 50px;
+            padding:20px;
+            padding-bottom: 50px;
+        }
+
+        footer {
+            width: 100%;
+            height: 50px;
+            background-color: #484b5c;
+            position: relative;
+            bottom: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+
+        a {
+            color: hsl(237, 88%, 56%);
+            text-decoration: none;
+        }
+
+        @media screen and (max-width: 990px) {
+            .rocksss {
+                display: none;
+            }
+        }
+
+    </style>
 </body>
 </html>

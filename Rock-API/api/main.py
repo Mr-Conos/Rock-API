@@ -113,12 +113,12 @@ def get_rock(tags: Union[str, None] = None,db: Session = Depends(get_db)):
     if tags:
         rock = crud.random_rock_by_tag(tags,db)
         return {"msg": "Rock not found by tag. Try entering a valid tag."} if rock == 404 else JSONResponse(status_code=200,content={"name": rock.name,"description": rock.description,"image":rock.image_url})
-    return crud.random_rock(db)
+    rock = crud.random_rock(db)
+    return JSONResponse(status_code=200,content={"name": rock.name,"description": rock.description,"image":rock.image_url})
 
 @Rock_API.get('/rock/{rock_name}')
 def get_rock(rock_name,db: Session = Depends(get_db)):
     rock = crud.search_rock(rock_name,db)
-    
     if not rock:
         return JSONResponse(status_code=404,content={"msg":"Rock not found"})
     return JSONResponse(status_code=200,content={"name": rock.name,"description": rock.description,"image":rock.image_url})

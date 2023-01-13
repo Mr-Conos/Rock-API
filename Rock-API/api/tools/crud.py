@@ -33,7 +33,7 @@ def add_rock(name,description,url,db:Session):
     return 200
 
 def update_rock(name,drop,update,db:Session):
-    rock = db.query(models.rocks).filter(models.rocks.name == name).first()
+    rock = db.query(models.rocks).filter(models.rocks.name == name.lower()).first()
     if not rock:
         return "Rock not found."
     if drop == "name":
