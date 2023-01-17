@@ -32,6 +32,13 @@ def add_rock(name,description,url,db:Session):
     db.refresh(rock)
     return 200
 
+def add_rock_tag(name,tag,db:Session):
+    rock = models.tags(name=name.lower(),tags=tag.lower())
+    db.add(rock)
+    db.commit()
+    db.refresh(rock)
+    return rock
+
 def update_rock(name,drop,update,db:Session):
     rock = db.query(models.rocks).filter(models.rocks.name == name.lower()).first()
     if not rock:

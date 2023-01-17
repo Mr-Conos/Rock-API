@@ -20,6 +20,16 @@
 
     <p id="result-post"></p>
 
+
+    <form autocomplete="off" method="post" id="rock11">
+        <input type="text" id="name" name="name" placeholder="Rock name" required>
+        <input type="text" id="tag" name="tag" placeholder="Rock tag" required>
+        <input type="button" value="Add Rock Tag" onclick="post_rock_tag()">
+    </form>
+
+    <p id="result-post-tag"></p>
+
+
     <form autocomplete="off" method="patch" id="rock22">
         <input type="text" id="name" name="name" placeholder="Rock name" required>
         <select id="drop" name="drop" size="1" required> 
@@ -74,6 +84,14 @@
             fetch('/add_rock', {method: 'POST',body: data,})
             .then(resp => resp.text()).then(data => {document.getElementById("result-post").innerHTML = data;}).catch(error => {console.error(error);});
         }
+
+        function post_rock_tag() {
+            var formElement = document.getElementById('rock11');
+            var data = new FormData(formElement);
+            fetch('/add_rock_tag', {method: 'POST',body: data,})
+            .then(resp => resp.text()).then(data => {document.getElementById("result-post-tag").innerHTML = data;}).catch(error => {console.error(error);});
+        }
+
 
         function update_rock() {
             var formElement = document.getElementById('rock22');

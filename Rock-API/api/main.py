@@ -103,6 +103,12 @@ def add_rock(name: str = Form(...),description: str = Form(...),image_url: str =
     rock = crud.add_rock(name,description,image_url,db)
     return JSONResponse(status_code=200,content={"msg":"Added"})
 
+@Rock_API.post('/add_rock_tag')
+def add_rock(name: str = Form(...),tag: str = Form(...),Authorize: AuthJWT = Depends(),db: Session = Depends(get_db)):
+    rock = crud.add_rock_tag(name,tag,db)
+    return JSONResponse(status_code=200,content="Posted!")
+
+
 @Rock_API.patch('/update_rock')
 def update_roc(name: str = Form(...),drop: str = Form(...),update: str = Form(...),Authorize: AuthJWT = Depends(),db: Session = Depends(get_db)):
     rock = crud.update_rock(name,drop,update,db)

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock API</title>
 
-
+    <link rel="icon" href="https://cdn.apiworks.tech/rockapi/rock-api.png" type="image/x-icon" />
     <meta name="description" content="Rocks" />
     <meta name="keywords" content="API,api,rock,cartoon,rocks" />
     <meta property="og:title" content="Rock API" />
@@ -63,14 +63,14 @@
 
         <h4>Covering different endpoints</h4>
         <h3 style="margin-top: 25px">Get Random Rock</h3>
-        <pre>URL: <code>https://rockapi.apiworks.tech/rock/random</code></pre>
+        <pre>URL: <code>/rock/random</code></pre>
         <p>Returns a random rock in JSON format with the following keys: name, description, and image_url, all of which are strings.</p>
         <table class="styled-table">
             <thead><tr><th>Type</th><th>Returns</th><th>Output Example</th><th>Source</th></tr></thead>
             <tbody><tr><td>GET</td><td>200 or 404</td><td>{"name":"rock",<br>"description":"description",<br>"image_url":"img url"}</td><td><a href="https://github.com/Mr-Conos/Rock-API/blob/master/Rock-API/api/main.py#L111">Link</a></td></tr></tbody>
         </table>
         <h3 style="margin-top: 25px">Get Random Rock with Tag</h3>
-        <pre>URL: <code>https://rockapi.apiworks.tech/rock/random?tags=tag here</code></pre>
+        <pre>URL: <code>/rock/random?tags=tag here</code></pre>
         <p>Add tags separated by a comma. Ex: rock,party,pun. If a tag is not found, it will return a 404.</p>
         <table class="styled-table">
             <thead><tr><th>Type</th><th>Returns</th><th>Input Example</th><th>Source</th></tr></thead>
@@ -79,7 +79,7 @@
 
 
         <h3 style="margin-top: 25px">Search Rock</h3>
-        <pre>URL: <code>https://rockapi.apiworks.tech/rock/rock here</code></pre>
+        <pre>URL: <code>/rock/rock here</code></pre>
         <p>If a rock is not found, it will return a 404.</p>
         <table class="styled-table">
             <thead><tr><th>Type</th><th>Returns</th><th>Input Example</th><th>Source</th></tr></thead>
@@ -244,7 +244,17 @@
             .rocksss {
                 display: none;
             }
+            .styled-table {
+                font-size: 10px;
+
+            }
+            .rock-img {
+                width: 200px;
+                height: auto;
+            }
         }
+
+
 
     </style>
 </body>
